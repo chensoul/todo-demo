@@ -37,15 +37,18 @@ class TodoServiceTest {
         Todo todo = new Todo();
         todo.setTitle("test");
         todo.setStatus(Todo.Status.PENDING);
+        todo.setGroup("工作");
         todo.setDeadline(java.time.LocalDateTime.of(2025, 7, 31, 23, 59));
         when(todoRepository.save(any(Todo.class))).thenReturn(todo);
         TodoDTO dto = new TodoDTO();
         dto.setTitle("test");
         dto.setStatus(Todo.Status.PENDING);
+        dto.setGroup("工作");
         dto.setDeadline(java.time.LocalDateTime.of(2025, 7, 31, 23, 59));
         TodoDTO result = todoService.create(dto);
         Assertions.assertEquals("test", result.getTitle());
         Assertions.assertEquals(java.time.LocalDateTime.of(2025, 7, 31, 23, 59), result.getDeadline());
+        Assertions.assertEquals("工作", result.getGroup());
     }
 
     @Test
@@ -53,11 +56,13 @@ class TodoServiceTest {
         Todo todo = new Todo();
         todo.setId(1L);
         todo.setDeleted(false);
+        todo.setGroup("工作");
         todo.setDeadline(java.time.LocalDateTime.of(2025, 7, 31, 23, 59));
         when(todoRepository.findById(1L)).thenReturn(Optional.of(todo));
         Optional<TodoDTO> result = todoService.findById(1L);
         Assertions.assertTrue(result.isPresent());
         Assertions.assertEquals(java.time.LocalDateTime.of(2025, 7, 31, 23, 59), result.get().getDeadline());
+        Assertions.assertEquals("工作", result.get().getGroup());
     }
 
     @Test

@@ -16,6 +16,7 @@ public class TodoConverter {
         dto.setCreatedAt(todo.getCreatedAt());
         dto.setUpdatedAt(todo.getUpdatedAt());
         dto.setDeadline(todo.getDeadline());
+        dto.setGroup(todo.getGroup());
         return dto;
     }
 
@@ -31,6 +32,7 @@ public class TodoConverter {
         todo.setCreatedAt(dto.getCreatedAt());
         todo.setUpdatedAt(dto.getUpdatedAt());
         todo.setDeadline(dto.getDeadline());
+        todo.setGroup(dto.getGroup());
         return todo;
     }
 }

@@ -67,6 +67,7 @@ public class TodoServiceImpl implements TodoService {
         old.setDescription(todoDTO.getDescription());
         old.setStatus(todoDTO.getStatus());
         old.setPriority(todoDTO.getPriority());
+        old.setGroup(todoDTO.getGroup());
         Todo saved = todoRepository.save(old);
         return TodoConverter.toDTO(saved);
     }

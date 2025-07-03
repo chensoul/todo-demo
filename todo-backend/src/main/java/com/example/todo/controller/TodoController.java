@@ -31,6 +31,9 @@ public class TodoController {
     }
 
     @PostMapping
+    /**
+     * 新建待办事项，支持可选分组 group 字段
+     */
     public ApiResponse<TodoDTO> create(@Valid @RequestBody TodoDTO todoDTO, Locale locale) {
         log.info("API create todo: {}", todoDTO.getTitle());
         TodoDTO created = todoService.create(todoDTO);
@@ -39,6 +42,9 @@ public class TodoController {
     }
 
     @PutMapping("/{id}")
+    /**
+     * 更新待办事项，支持可选分组 group 字段
+     */
     public ApiResponse<TodoDTO> update(@PathVariable Long id, @Valid @RequestBody TodoDTO todoDTO, Locale locale) {
         log.info("API update todo id: {}", id);
         TodoDTO updated = todoService.update(id, todoDTO);

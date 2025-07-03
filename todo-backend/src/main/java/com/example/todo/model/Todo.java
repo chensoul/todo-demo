@@ -38,6 +38,11 @@ public class Todo {
 
     @Column(name = "deadline")
     private LocalDateTime deadline;
+    /**
+     * 可选分组名
+     */
+    @Column(name = "group_name", length = 50)
+    private String groupName;
 
     public enum Status {
         PENDING, IN_PROGRESS, COMPLETED, ARCHIVED, EXPIRED
@@ -123,5 +128,13 @@ public class Todo {
 
     public void setDeadline(LocalDateTime deadline) {
         this.deadline = deadline;
+    }
+
+    public String getGroupName() {
+        return groupName;
+    }
+
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
     }
 }

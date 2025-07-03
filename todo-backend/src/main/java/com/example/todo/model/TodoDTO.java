@@ -16,6 +16,11 @@ public class TodoDTO {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private LocalDateTime deadline;
+    /**
+     * 可选分组名
+     */
+    @io.swagger.v3.oas.annotations.media.Schema(description = "可选分组名，字符串，最大长度50，可为空")
+    private String group;
 
     // getters and setters
     public Long getId() { return id; }
@@ -36,4 +41,6 @@ public class TodoDTO {
     public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
     public LocalDateTime getDeadline() { return deadline; }
     public void setDeadline(LocalDateTime deadline) { this.deadline = deadline; }
+    public String getGroup() { return group; }
+    public void setGroup(String group) { this.group = group; }
 }

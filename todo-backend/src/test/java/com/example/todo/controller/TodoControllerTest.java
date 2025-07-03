@@ -33,13 +33,16 @@ class TodoControllerTest {
         todo.setId(1L);
         todo.setTitle("test");
         todo.setStatus(com.example.todo.model.Todo.Status.PENDING);
+        todo.setGroup("工作");
+        todo.setGroup("工作");
         todo.setDeadline(java.time.LocalDateTime.of(2025, 7, 31, 23, 59));
         Mockito.when(todoService.findById(1L)).thenReturn(Optional.of(todo));
         mockMvc.perform(MockMvcRequestBuilders.get("/api/todos/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.code").value(0))
                 .andExpect(jsonPath("$.data.title").value("test"))
-                .andExpect(jsonPath("$.data.deadline").value("2025-07-31T23:59:00"));
+                .andExpect(jsonPath("$.data.deadline").value("2025-07-31T23:59:00"))
+                .andExpect(jsonPath("$.data.group").value("工作"));
     }
 
     @Test
@@ -55,7 +58,8 @@ class TodoControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.code").value(0))
                 .andExpect(jsonPath("$.data.title").value("test"))
-                .andExpect(jsonPath("$.data.deadline").value("2025-07-31T23:59:00"));
+                .andExpect(jsonPath("$.data.deadline").value("2025-07-31T23:59:00"))
+                .andExpect(jsonPath("$.data.group").value("工作"));
     }
 
     @Test
