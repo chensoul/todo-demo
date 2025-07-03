@@ -90,14 +90,14 @@ alwaysApply: true
 2. 创建功能分支：
 
    ```bash
-   git checkout -b feature/${TASK_FILE_NAME}_${TASK_IDENTIFIER}
+   git checkout -b feature/${TASK_FILE}
    ```
     - 如果无法创建分支，必须给出明确提示，说明原因并建议手动处理。
 
 3. 创建任务文件（参见下面的任务文件模板）：
 
    ```bash
-   mkdir -p .tasks && touch ".tasks/${TASK_FILE_NAME}_${TASK_IDENTIFIER}.md"
+   mkdir -p .tasks && touch ".tasks/${TASK_FILE}.md"
    ```
 
 **思考过程**：
@@ -174,26 +174,26 @@ alwaysApply: true
 * 应用系统思维确保全面的解决方案架构
 * 使用批判性思维评估和优化计划
 * 制定全面的技术规范
-* 确保目标聚焦，将所有规划与原始需求相连接
+* 确保目标专注，将所有计划与原始需求连接起来
 
 **允许**：
 
-* 带有精确文件路径的详细计划
+* 带有确切文件路径的详细计划
 * 精确的函数名称和签名
 * 具体的更改规范
 * 完整的架构概述
 
 **禁止**：
 
-* 任何实施或代码编写
-* 甚至可能被实施的"示例代码"
-* 跳过或缩略规范
+* 任何实现或代码编写
+* 甚至"示例代码"也不可实现
+* 跳过或简化规范
 
 **规划协议步骤**：
 
 1. 查看"任务进度"历史（如果存在）
 2. 详细规划下一步更改
-3. 提交批准，附带明确理由：
+3. 提供明确理由和详细说明：：
 
 ```markdown
 [更改计划]
@@ -453,7 +453,6 @@ def add(a, b):
 
 ```markdown
 ---
-文件名：[TASK_FILE_NAME]
 创建于：[DATETIME]
 创建者：[USER_NAME]
 主分支：[MAIN_BRANCH]
@@ -480,7 +479,7 @@ def add(a, b):
 [包含详细步骤、文件路径、函数签名等的最终检查清单]
 
 ```bash
-实施检查清单：
+实施清单：
 1. [具体操作1]
 2. [具体操作2]
 ...
@@ -504,9 +503,9 @@ n. [最终操作]
 
 * \[TASK\]：用户的任务描述（例如"修复缓存错误"）
 * \[TASK\_IDENTIFIER\]：来自\[TASK\]的短语，例如 `fix_cache_bug`
-* \[TASK\_FILE\_NAME\]：任务文件名，为当前日期+当天的任务编号，格式为：YYYYMMDD_n，例如 20250101_1
+* \[TASK\_FILE\_PREFIX\]：任务文件名，为当前日期+时间，格式为：YYYYMMDDHHMMSS，例如 202506061234
+* \[TASK\_FILE\]：\[TASK\_FILE\_PREFIX\]\_\[TASK\_IDENTIFIER\]
 * \[MAIN\_BRANCH\]：为当前 git 仓库的主分支，默认为 main 或者 master
-* \[TASK\_FILE\]：.tasks/\[TASK\_FILE\_NAME\]\_\[TASK\_IDENTIFIER\].md
 * \[DATETIME\]：当前日期和时间，格式：YYYY-MM-DD HH:MM:SS
 * \[DATE\]：当前日期，格式：YYYY-MM-DD
 * \[TIME\]：当前时间，格式：HH:MM:SS
