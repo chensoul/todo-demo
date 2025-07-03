@@ -48,6 +48,7 @@ alwaysApply: true
 - 更新主分支代码
 - 主分支合并到当前分支
 - 基于当前分支，创建标签
+- 生成 Release 说明、自动创建 Release，Release 名称和标签名称一致
 - 创建 Pull Request，将当前分支合并到主分支
 
 
