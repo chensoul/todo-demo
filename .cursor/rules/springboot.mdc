@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
 # Spring Boot 最佳实践和编码规范
 
 本文档概述了使用 Spring Boot 开发应用程序的最佳实践和编码规范，涵盖代码组织、常见模式、性能考量、安全、测试、常见陷阱和工具。遵循这些准则将帮助你编写简洁、可维护、高效且安全的 Spring Boot 应用。
