@@ -20,7 +20,7 @@ public class TodoDTO {
      * 可选分组名
      */
     @io.swagger.v3.oas.annotations.media.Schema(description = "可选分组名，字符串，最大长度50，可为空")
-    private String group;
+    private String groupName;
 
     // getters and setters
     public Long getId() { return id; }
@@ -41,6 +41,6 @@ public class TodoDTO {
     public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
     public LocalDateTime getDeadline() { return deadline; }
     public void setDeadline(LocalDateTime deadline) { this.deadline = deadline; }
-    public String getGroup() { return group; }
-    public void setGroup(String group) { this.group = group; }
+    public String getGroupName() { return groupName; }
+    public void setGroupName(String groupName) { this.groupName = groupName; }
 }
