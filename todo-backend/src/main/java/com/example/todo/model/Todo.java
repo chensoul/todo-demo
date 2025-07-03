@@ -36,8 +36,11 @@ public class Todo {
     @Column(nullable = false)
     private Boolean deleted = false;
 
+    @Column(name = "deadline")
+    private LocalDateTime deadline;
+
     public enum Status {
-        PENDING, IN_PROGRESS, COMPLETED, ARCHIVED
+        PENDING, IN_PROGRESS, COMPLETED, ARCHIVED, EXPIRED
     }
 
     @PrePersist
@@ -112,5 +115,13 @@ public class Todo {
 
     public void setDeleted(Boolean deleted) {
         this.deleted = deleted;
+    }
+
+    public LocalDateTime getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(LocalDateTime deadline) {
+        this.deadline = deadline;
     }
 }

@@ -1,0 +1,29 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: todo-backend
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/todo_db?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true}
+    username: ${SPRING_DATASOURCE_USERNAME:todo}
+    password: ${SPRING_DATASOURCE_PASSWORD:todo123}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+
+todo:
+  expire:
+    cron: "0 0/5 * * * ?" # 每5分钟执行一次，可根据需要调整

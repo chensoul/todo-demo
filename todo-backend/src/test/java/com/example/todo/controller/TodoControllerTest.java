@@ -1,6 +1,6 @@
 package com.example.todo.controller;
 
-import com.example.todo.model.Todo;
+import com.example.todo.model.TodoDTO;
 import com.example.todo.service.TodoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -29,38 +29,42 @@ class TodoControllerTest {
 
     @Test
     void testGetTodo() throws Exception {
-        Todo todo = new Todo();
+        TodoDTO todo = new TodoDTO();
         todo.setId(1L);
         todo.setTitle("test");
-        todo.setStatus(Todo.Status.PENDING);
+        todo.setStatus(com.example.todo.model.Todo.Status.PENDING);
+        todo.setDeadline(java.time.LocalDateTime.of(2025, 7, 31, 23, 59));
         Mockito.when(todoService.findById(1L)).thenReturn(Optional.of(todo));
         mockMvc.perform(MockMvcRequestBuilders.get("/api/todos/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.code").value(0))
-                .andExpect(jsonPath("$.data.title").value("test"));
+                .andExpect(jsonPath("$.data.title").value("test"))
+                .andExpect(jsonPath("$.data.deadline").value("2025-07-31T23:59:00"));
     }
 
     @Test
     void testCreateTodo() throws Exception {
-        Todo todo = new Todo();
+        TodoDTO todo = new TodoDTO();
         todo.setTitle("test");
-        todo.setStatus(Todo.Status.PENDING);
-        Mockito.when(todoService.create(any(Todo.class))).thenReturn(todo);
+        todo.setStatus(com.example.todo.model.Todo.Status.PENDING);
+        todo.setDeadline(java.time.LocalDateTime.of(2025, 7, 31, 23, 59));
+        Mockito.when(todoService.create(any(TodoDTO.class))).thenReturn(todo);
         mockMvc.perform(MockMvcRequestBuilders.post("/api/todos")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(todo)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.code").value(0))
-                .andExpect(jsonPath("$.data.title").value("test"));
+                .andExpect(jsonPath("$.data.title").value("test"))
+                .andExpect(jsonPath("$.data.deadline").value("2025-07-31T23:59:00"));
     }
 
     @Test
     void testCreateTodoWithPriority() throws Exception {
-        Todo todo = new Todo();
+        TodoDTO todo = new TodoDTO();
         todo.setTitle("test");
-        todo.setStatus(Todo.Status.PENDING);
+        todo.setStatus(com.example.todo.model.Todo.Status.PENDING);
         todo.setPriority(com.example.todo.model.Priority.HIGH);
-        Mockito.when(todoService.create(any(Todo.class))).thenReturn(todo);
+        Mockito.when(todoService.create(any(TodoDTO.class))).thenReturn(todo);
         mockMvc.perform(MockMvcRequestBuilders.post("/api/todos")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(todo)))
@@ -71,10 +75,10 @@ class TodoControllerTest {
 
     @Test
     void testGetTodoWithPriority() throws Exception {
-        Todo todo = new Todo();
+        TodoDTO todo = new TodoDTO();
         todo.setId(1L);
         todo.setTitle("test");
-        todo.setStatus(Todo.Status.PENDING);
+        todo.setStatus(com.example.todo.model.Todo.Status.PENDING);
         todo.setPriority(com.example.todo.model.Priority.MEDIUM);
         Mockito.when(todoService.findById(1L)).thenReturn(Optional.of(todo));
         mockMvc.perform(MockMvcRequestBuilders.get("/api/todos/1"))
