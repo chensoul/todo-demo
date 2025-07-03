@@ -448,7 +448,7 @@ Yolo模式：[YOLO_MODE]
 ### 占位符定义
 
 * \[TASK\]：用户的任务描述（例如"修复缓存错误"）
-* \[TASK\_IDENTIFIER\]：来自\[TASK\]的短语（例如"fix_cache_bug"）
+* \[TASK\_IDENTIFIER\]：来自\[TASK\]的短语（例如 fix\_cache\_bug）
 * \[TASK\_DATE\_AND\_NUMBER\]：日期+序列（例如20250114\_1）
 * \[TASK\_FILE\_NAME\]：任务文件名，格式为YYYYMMDD\_n（其中n是当天的任务编号）
 * \[MAIN\_BRANCH\]：为当前 git 仓库的主分支，默认为 main 或者 master
