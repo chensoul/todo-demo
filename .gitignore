@@ -1,0 +1,10 @@
+*.class
+*.iml
+*.idea
+*.log
+target
+**/target
+logs
+**/dependency-reduced-pom.xml
+pom.xml.versionsBackup
+.DS_Store
